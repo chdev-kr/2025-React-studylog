@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocumentFragment</title>
+  </head>
+  <body>
+    <main></main>
+
+    <script>
+      const main = document.querySelector("main");
+      const frag = document.createDocumentFragment();
+
+      for (let i = 0; i < 10; i++) {
+        const fig = document.createElement("figure");
+        fig.innerHTML = `
+                <img
+          src="https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fbfb3368e-35f3-429b-89e4-7aae2d2f134a.jpg"
+          alt=""
+        />
+        <figcaption>박은빈입니다.</figcaption>
+        `;
+
+        frag.append(fig);
+      }
+      main.append(frag);
+    </script>
+  </body>
+</html>
