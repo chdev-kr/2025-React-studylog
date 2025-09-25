@@ -9,12 +9,13 @@ const CardDiv = styled.div`
 `;
 
 const Card = (props) => {
-  console.log(props);
   return (
     <>
-      <h3>{props.value}</h3>
-      <hr />
-      <div>{props.children}</div>
+      <CardDiv className={props.cardClassName}>
+        <h3>{props.title}</h3>
+        <hr />
+        <div>{props.children}</div>
+      </CardDiv>
     </>
   );
 };
@@ -50,7 +51,7 @@ const Test = (props) => {
   return (
     <>
       <p>hello world</p>
-      <div> {props.children} </div>
+      <div>{props.children}</div>
     </>
   );
 };

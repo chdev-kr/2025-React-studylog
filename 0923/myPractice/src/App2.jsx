@@ -4,7 +4,7 @@ import Question from "./Components/Question";
 import Review from "./Components/Review";
 
 const ContentsContainer = ({ listName }) => {
-  if (listName === "detail") {
+  if (listName == "detail") {
     return <Detail />;
   } else if (listName === "qa") {
     return <Question />;
@@ -23,15 +23,17 @@ function NavBar() {
     <>
       <nav>
         <ul>
-          <li
-            id="detail"
-            style={
-              listName === "detail" ? { color: "red" } : { color: "black" }
-            }
-            onClick={checkId}
-          >
-            상세정보
-          </li>
+          {true && (
+            <li
+              id="detail"
+              style={
+                listName == "detail" ? { color: "red" } : { color: "black" }
+              }
+              onClick={checkId}
+            >
+              상세정보
+            </li>
+          )}
           <li
             id="qa"
             onClick={checkId}

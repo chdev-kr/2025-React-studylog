@@ -1,11 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App5 from "./App5.jsx";
+import App from "./Quiz.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <App /> */}
-    <App5 />
-    {/* <Practice /> */}
+    <App />
   </StrictMode>
 );

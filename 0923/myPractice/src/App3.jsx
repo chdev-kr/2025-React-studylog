@@ -4,12 +4,9 @@ function App3() {
   const roles = ["admin", "guest", "user"];
   const randomRoles = roles[Math.floor(Math.random() * roles.length)];
 
-  const [userRole, setUserRole] = useState(randomRoles);
-
   return <SimpleRouter userRole={randomRoles} />;
 }
 
-// 가상의 컴포넌트들
 const AdminView = () => <div>관리자 대시보드: 모든 정보</div>;
 const GuestView = () => (
   <div>

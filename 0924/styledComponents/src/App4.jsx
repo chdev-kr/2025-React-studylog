@@ -1,43 +1,71 @@
-import styled from "styled-components";
+import React from "react";
 
-const ProductTitle = styled.h2`
-  color: red;
-`;
+function ContCard({ children }) {
+  return <div>{children}</div>;
+}
 
-const ProductSubTitle = styled.h3`
-  color: blue;
-`;
-
-const ProductDescription = styled.p`
-  font-weight: bold;
-`;
-
-const ProductPrice = styled.div`
-  border: 1px solid red;
-`;
-const ProductImage = (props) => {
-  return <img src={props.src} alt={props.alt} />;
+const ProductImage = ({ src, alt }) => {
+  return <img src={src} alt={alt} />;
 };
 
-function App(props) {
+const ProductTitle = ({ children }) => {
+  return <h2> {children} </h2>;
+};
+
+const SubTitle = ({ children }) => {
+  return <h3> {children} </h3>;
+};
+
+const ProductDescription = ({ children }) => {
+  return <p> {children}</p>;
+};
+const currencyConfig = {
+  USD: { locale: "en-US", currency: "USD", symbol: "$" },
+  EUR: { locale: "de-DE", currency: "EUR", symbol: "€" },
+  GBP: { locale: "en-GB", currency: "GBP", symbol: "£" },
+  JPY: { locale: "ja-JP", currency: "JPY", symbol: "¥" },
+  KRW: { locale: "ko-KR", currency: "KRW", symbol: "₩" },
+  CNY: { locale: "zh-CN", currency: "CNY", symbol: "¥" },
+};
+
+const formatPrice = (price, currencyCode) => {
+  const config = currencyConfig[currencyCode];
+
+  return new Intl.NumberFormat(config.locale, {
+    style: "currency",
+    currency: config.currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(price);
+};
+
+const PriceFormatter = ({ price, currencyCode }) => {
+  const formattedPrice = formatPrice(price, currencyCode);
+
+  return <data value={price}>{formattedPrice}</data>;
+};
+
+const ProductPrice = ({ price, currencyCode }) => {
+  return <PriceFormatter price={price} currencyCode={currencyCode} />;
+};
+
+function App() {
   return (
-    <>
+    <ContCard>
       <ProductImage
         src={"https://picsum.photos/id/237/200/300"}
         alt={"검은강아지"}
       />
       <ProductTitle>검은 강아지를 입양하세요</ProductTitle>
-      <ProductSubTitle>엄청 얌전하답니다. 우리개는 안물어요!</ProductSubTitle>
+      <SubTitle>엄청 얌전하답니다.</SubTitle>
       <ProductDescription>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-        distinctio sed molestias saepe reiciendis fugit illum enim et inventore,
-        aliquam esse non nam consectetur minima atque consequuntur voluptates,
-        eum quia.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
+        laudantium, tempore aut iure error dolores dicta nesciunt aspernatur
+        consequuntur omnis animi nam suscipit itaque, eligendi amet quia,
+        ratione vero! Veritatis!
       </ProductDescription>
-      <p>사료, 집 일괄 판매합니다.</p>
-      <ProductPrice />
-      <p>$1,000.00</p>
-    </>
+      <ProductPrice price={30000} currencyCode={"EUR"} />
+    </ContCard>
   );
 }
 

@@ -6,12 +6,12 @@ function Button(props) {
 }
 
 function Modal(props) {
-  const { title, content, onClose } = props;
+  const { title, content, onClick } = props;
   return (
     <div>
       <h2>{title}</h2>
       <p>{content}</p>
-      <Button text="Close" onClick={onClose} />
+      <Button text="Close" onClick={onClick} />
     </div>
   );
 }

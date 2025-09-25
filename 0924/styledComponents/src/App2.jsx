@@ -15,12 +15,12 @@ function App() {
   return (
     <div>
       <h1>Welcome to my app!</h1>
-      <button onClick={handleOpenModal}>Open modal</button>
+      <button onClick={handleOpenModal}> Open Modal</button>
       {isModalOpen && (
         <Modal
-          title="My modal"
-          content="This is my modal."
-          onClose={handleCloseModal}
+          title="My Modal"
+          content="This is my modal"
+          onClick={handleCloseModal}
         />
       )}
     </div>
